@@ -12,7 +12,8 @@ TARGET_DIR="dist"
 BIN_NAME="lottery"
 
 create_win_bat() {
-	echo "@echo off && lottery $1 && pause"
+	echo "set NODE_SKIP_PLATFORM_CHECK=1" >>$2
+	echo "lottery $1 & pause" >>$2
 }
 
 if [ -d "$TARGET_DIR" ]; then
@@ -27,12 +28,12 @@ mkdir -p $TARGET_DIR
 npm install
 
 if [[ "$1" == *"arm"* ]]; then
-	OUTFILE="$TARGET_DIR/lottery-auto-script-node18-$1"
+	OUTFILE="$TARGET_DIR/lottery-auto-script-$1"
 	sudo podman run --rm --privileged multiarch/qemu-user-static --reset -p yes
 	podman run -it \
 		--rm \
 		-v ${PWD}:/root/lottery \
-		shanmite/pkg-arm64 -t "node18.5.0-$1" -o "$OUTFILE" .
+		shanmite/pkg-arm64 -t "node18-$1" -o "$OUTFILE" .
 elif [[ "$1" == *"x64"* ]]; then
 	OUTFILE="$TARGET_DIR/lottery-auto-script-$1"
 	npx pkg -t "$1" -o "$OUTFILE" .
@@ -49,9 +50,9 @@ for file in "$TARGET_DIR/"*; do
 	cp $TEMPLATE_CONFIG_FILE "$TMPDIR.d/$CONFIG_FILE"
 	cp $TEMPLATE_ENV_FILE "$TMPDIR.d/$ENV_FILE"
 	if [ "$(echo $file | grep '.exe')" ]; then
-		BATS=("start" "check" "clear" "update")
+		BATS=("start" "check" "clear" "account" "update" "login")
 		for item in "${BATS[@]}"; do
-			create_win_bat "${item}" >"$TMPDIR.d/$item.bat"
+			create_win_bat "${item}" "$TMPDIR.d/$item.bat"
 		done
 		mv "$TMPDIR.d/$BIN_NAME" "$TMPDIR.d/$BIN_NAME.exe"
 	else

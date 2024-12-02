@@ -1,7 +1,7 @@
 1.初始化
 
 ```bash
-curl -fsSL https://cdn.staticaly.com/gh/shanmiteko/LotteryAutoScript/main/script/docker/init.sh | sudo sh
+curl -fsSL https://gitlab.com/shanmiteko/LotteryAutoScript/-/raw/main/script/docker/init.sh | sudo bash
 ```
 
 进入`lottery`文件夹

@@ -3,16 +3,19 @@
 - [AutoScript](#autoscript)
   - [操作步骤](#操作步骤)
     - [获取COOKIE](#获取cookie)
+      - [扫码登陆](#扫码登陆)
+      - [手动获取](#手动获取)
     - [本地运行](#本地运行)
       - [可执行文件](#可执行文件)
       - [以源码方式运行](#以源码方式运行)
     - [Docker](#docker)
     - [青龙面板](#青龙面板)
-  - [防重复转发(可选)](#防重复转发可选)
   - [检测中奖](#检测中奖)
     - [检测未读信息, 已读未读信息](#检测未读信息-已读未读信息)
-    - [中奖推送(可选)](#中奖推送可选)
+    - [中奖推送](#中奖推送)
   - [设置说明](#设置说明)
+    - [评论验证码识别](#评论验证码识别)
+    - [其他](#其他)
   - [Awesome](#awesome)
 
 [Github仓库链接](https://github.com/shanmiteko/LotteryAutoScript)
@@ -53,6 +56,43 @@
 
 ### 获取COOKIE
 
+#### 扫码登陆
+
+在`env.js`文件填`COOKIE`的对应位置写入`"DedeUserID=你的UID"`即可使用`lottery login`扫码自动获取Cookie
+
+`COOKIE`中包含`DedeUserID=你的UID`的都会被自动替换
+
+#### 手动获取
+
+第一种
+进入[B站主页](https://www.bilibili.com/)点击个人头像进入个人主页获取Cookie用于登录
+
+Chrome浏览器:
+
+进入个人主页后
+1. `F12`打开控制台
+
+2. F5刷新
+
+3. 根据图中找到network/网络 搜索nav,点击找到的nav,点标头，下滑，找到COOKIE全部复制
+![image](doc/pic/getCookies2.png)
+
+注意！！！！！！！！！！！
+
+注意！！！！！！！！！！！
+
+注意！！！！！！！！！！！
+
+所有网页端获取的COOKIE，每次打开网页端时，都会有概率刷新COOKIE，点击退出账号则会退出当前COOKIE。可以利用Chrome内核的浏览器创建多用户，专门用于获取COOKIE。
+
+注意！！！！！！！！！！！
+
+注意！！！！！！！！！！！
+
+注意！！！！！！！！！！！
+
+
+第二种
 进入[B站主页](https://www.bilibili.com/)获取Cookie用于登录
 
 Chrome浏览器:
@@ -73,7 +113,7 @@ Chrome浏览器:
       .cookie
       .split(/\s*;\s*/)
       .map(it => it.split('='))
-      .filter(it => ['DedeUserID','bili_jct', 'SESSDATA'].indexOf(it[0]) > -1)
+      .filter(it => ['DedeUserID','bili_jct', 'SESSDATA', 'buvid3'].indexOf(it[0]) > -1)
       .map(it => it.join('='))
       .join('; ')
       .split()
@@ -82,7 +122,9 @@ Chrome浏览器:
 
 也可以采用**其他方式获取**所需的Cookie
 
-只需含有 `DedeUserID=...;SESSDATA=...;bili_jct=...` 三项即可
+只需含有 `DedeUserID=...;SESSDATA=...;bili_jct=...;buvid3=...` 即可
+
+buvid3亦可不填 使用随机生成值
 
 (分号分割, 不要换行, 顺序随意)
 
@@ -109,23 +151,22 @@ Chrome浏览器:
 4. 在`my_config.js`中自定义设置
 5. 在当前目录下**打开终端**运行可执行文件`lottery`(勿直接点击`lottery`)
   - windows 可直接点击对应的`*.bat`文件
-  - unix-like
-    ```sh
-    ## 进入脚本所在目录
-    ## 授予执行权限
-    $ chmod u+x lottery
-    ## 启动脚本
-    $ ./lottery start
-    ## 检测中奖
-    $ ./lottery check
-    ## 清理关注动态
-    $ ./lottery clear
-    ## 下载最新版本
-    $ ./lottery update
+
+    ```
+    用法: lottery [OPTIONS]
+    
+    OPTIONS:
+            start  启动抽奖
+            check  中奖检查
+            acount 查看帐号信息
+            clear  清理动态和关注
+            update 检查更新
+            login  扫码登录更新CK
+            help   帮助信息
     ```
 
-7. 运行截图
-  ![lottery_start](https://raw.githubusercontents.com/shanmiteko/LotteryAutoScript/main/doc/pic/lottery_start.png)
+1. 运行截图
+    ![lottery_start](https://raw.githubusercontents.com/shanmiteko/LotteryAutoScript/main/doc/pic/lottery_start.png)
 
 #### 以源码方式运行
 
@@ -145,14 +186,6 @@ Chrome浏览器:
 
 ----------------------------------------
 
-## 防重复转发(可选)
-
-- 脚本将转发过的动态和被过滤的动态都写入`dyids/dyid*.txt`文件中
-
-- 是否点赞
-
-----------------------------------------
-
 ## 检测中奖
 
 ### 检测未读信息, 已读未读信息
@@ -165,7 +198,7 @@ Chrome浏览器:
 
 关键词有限 可能会有**漏掉**的或**误报**
 
-### 中奖推送(可选)
+### 中奖推送
 
 > 填写在env.js内
 
@@ -199,10 +232,18 @@ Chrome浏览器:
 |    `SMTP_USER`     |                                      电子邮件                                      | 发送方的电子邮件   如: `xxxxxxxxx@qq.com`                                                                                                                                                                                                                                                    |
 |    `SMTP_PASS`     |                                      电子邮件                                      | smtp服务对应的授权码                                                                                                                                                                                                                                                                         |
 |   `SMTP_TO_USER`   |                                      电子邮件                                      | 接收方电子邮件                                                                                                                                                                                                                                                                               |
+|    `GOTIFY_URL`    |                                     gotify推送                                     | gotify消息推送地址(例如 http://localhost:8008/message)，[官方文档](https://gotify.net/docs/)                                                                                                                                                                                                 |
+|  `GOTIFY_APPKEY`   |                                     gotify推送                                     | 一个gotify application的token，[官方文档](https://gotify.net/docs/)                                                                                                                                                                                                                          |
 
 ----------------------------------------
 
 ## 设置说明
+
+### 评论验证码识别
+
+[点击跳转](doc/chat_captcha_orc.md)
+
+### 其他
 
 详见[env.example.js](./env.example.js)文件内部注释
 

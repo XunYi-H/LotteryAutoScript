@@ -1,5 +1,173 @@
 <!-- markdownlint-disable MD036 MD024-->
 # CHANGELOG
+## 主要变化(2.9.4)
+* 2f5990f fix: 动态ID字符串长度超过18
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.9.3)
+* 1d4e8ea fix: 专栏获取为空 (#425)
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.9.2)
+* 4134190 fix: 分区移动失败继续运行 (#423)
+* 66fa06f fix: 源动态禁止转发
+* b1de122 fix: 验证码识别失败无限重试
+* d3475a5 feat(notify.js): QYWX推送变为图文消息 (#416)
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.9.1)
+* 9b0f9bf fix: 仅屏蔽自动回复 (#401)
+* 74337ca fix: 账号转发动态途中被系统强制登出，任务直接终止 (#392)
+* 6c75d57 lint: eslint
+* e723136 feat:  可自定义验证码识别API
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.9.0)
+* 1e7d8b2 feat: 动态详情新老api共存
+* fc41750 fix: 源rid_str获取
+* 1a08c0a fix: 话题uid动态获取使用老解析函数
+* 666c057 feat: 使用新接口替换动态详情老接口 (#382)
+* df3e97d ci: fix "an artifact with this name already exists on the workflow run"
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.19)
+* d9f6bf2 feat: 中奖检测屏蔽自动回复 (#381)
+* ded981e fix: 动态卡片解析出错导致程序停止
+* 93d3727 fix: searcher.js typo fix (#379)
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.17)
+* 60e211e fix: 读取uid出错 (#369)
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.17)
+* 5b33ae3 fix: 读取uid出错 (#369)
+* 7e4650c feat: env可自定义UA (#371)
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.16)
+* 469a6dc fix: add getOneDynamicByDyid v1
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.15)
+* 7b6356a fix:  风控导致动态全为过时
+* d337fb2 fix: 查询动态详情的接口失效 (#349)
+* d9dba6f fix: Cannot read properties of null (reading 'is_liked')
+* eafa7c7 fix:  Cannot read properties of null (reading 'length') (#360)
+* e2976cc docs: 文档更新cookie获取方式 (#357)
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.14)
+* f5bdd28 fix: update api getOneDynamicByDyid
+* cb6fad0 fix: get_dynamic_detail api  (#351)
+* 780a3a9 fix: update get_dynamic_detail api (#350)
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.13)
+* addb9c6 fix: ghproxy.com->mirror.ghproxy.com (#333)
+* b86e756 fix: at错位
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.12)
+* 5d30178 ci: docker构建
+* 0c61070 fix: 评论并转发 (#259)
+* 6dfee7e fix: 出现帐号未登录错误时自动跳转下一个帐号
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.11)
+* 6496a8f fix: fs.close
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.10)
+* e32c3c9 fix: 已经关注用户未转发
+* 3bd77b3 fix: fs.close
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.9)
+* 588feba docs: update readme
+* 5d5858f fix: 无法已读未关注未读私信
+* 1526519 docs: 添加gotify推送说明
+* 69c297e feat: 添加Gotify推送
+* 2017705 feat: autoAttention API增加对重复关注的处理
+* 16c113f docs: update readme
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.8)
+* 54af844 fix: 专栏无法获取
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.7)
+* 62768dd fix: 修改win脚本
+* 101df0a fix: login等待时间过长
+* f8829b5 fix: 清理动态检索动态延时
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.6)
+* 83e19d4 docs: 扫码登陆使用说明
+* c238c27 fix：多账号login添加时延进行间隔
+* 8addc90 fix：登录跳过执行正常状态的账号
+* 288851b feat: 扫码登录获取移动端的CK更新账号,带sid可减小掉号频率
+* ddcfcee fix: 移除公共黑名单设置
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.5)
+* 0024b19 feat: 移除远程设置启用自动更新
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.4)
+* 9ab605a feat: 新增本地dyids抽奖新信息获取方式 (#311)(#287)
+* a83c5ab fix: extend_json undefined
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.3)
+* 2f2eaab fix: 预约抽奖包月抽奖识别异常 (#288)
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.2)
+* 3825be4 feat: 查看帐号信息
+* 248c78d feat: 快速移除关注模式新增粉丝数限制 (#305)
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.1)
+* d44981b fix: 随机cookie参数buvid3
+* 3bfc93f fix: 目前回复无法正常推送 (#302)
+* ef8366b fix: tg推送代理设置出错 (#298)
+* a7e31b4 docs: update
+* f4f45c5 fix: cookie参数buvid3错误导致专栏获取滞后
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
+## 主要变化(2.8.0)
+* 2f935bb chore: update env.js
+* eec22ff feat: 验证码自动识别
+* 909fb83 chore: update qinglong script
+* 41b0369 ci: fix pkg.yml
+
+_如果之前版本小于上一版本,请查看[CHANGELOG](https://github.com/shanmiteko/LotteryAutoScript/blob/main/CHANGELOG.md)变更说明_
+
 ## 主要变化(2.7.11)
 * 5a3c16d fix: 专栏获取内容不正确，需要排除推荐内容 (#293)
 
